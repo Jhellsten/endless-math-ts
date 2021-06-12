@@ -62,7 +62,7 @@ const Navigation = () => {
           headerShown: false,
         }}
       >
-        <Stack.Screen name={SCREENS.HOME} component={renderTabNavigation} />
+        <Stack.Screen name={SCREENS.HOME} component={HomeScreen} />
         <Stack.Screen name={SCREENS.DETAIL}>
           {(props) => <DetailScreen {...props} />}
         </Stack.Screen>
