@@ -28,17 +28,21 @@
     // ? Babel Plugin Module Resolver
     "baseUrl": "./src",
     "paths": {
+      "@actions": ["./actions"],
       "@shared-components/*": ["./shared/components/*"],
       "@shared-constants": ["./shared/constants"],
       "@font-size": ["./shared/theme/font-size"],
       "@api": ["./services/api/index"],
       "@fonts": ["./shared/theme/fonts/index"],
-      "@colors": ["./shared/theme/colors"],
+      "@themes": ["./shared/theme/colors"],
       "@theme": ["./shared/theme/*"],
+      "@theme-variables": ["./shared/theme/variables/index"],
+      "@mixins": ["./shared/theme/abstracts/index"],
       "@services/*": ["./services/*"],
       "@screens/*": ["./screens/*"],
       "@utils": ["./utils/"],
       "@assets": ["./assets/"],
+      "@images": ["./assets/images/"],
       "@local-storage": ["./services/local-storage"]
     }
   },

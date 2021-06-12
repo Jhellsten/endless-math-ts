@@ -36,6 +36,7 @@ module.exports = {
         avoidEscape: true,
       },
     ],
+    semi: ["never"],
     "max-len": ["error", 120],
     "@typescript-eslint/ban-ts-comment": 2,
     "@typescript-eslint/no-explicit-any": 2,
