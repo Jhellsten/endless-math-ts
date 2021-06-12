@@ -1,6 +1,9 @@
-import colors from "./colors";
-const lightTheme = colors.light;
-const darkTheme = colors.dark;
+import colors, { ThemeType } from "./colors";
+const mintTheme = colors.pink;
+const pinkTheme = colors.mint;
+const lightTheme = colors.lightTheme;
+const darkTheme = colors.darkTheme;
 
-export { lightTheme, darkTheme };
-export default { lightTheme, darkTheme };
+
+export { darkTheme, mintTheme, pinkTheme, lightTheme, ThemeType };
+export default { darkTheme, mintTheme, pinkTheme, lightTheme };
