@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes'
-import themes, { ThemeType } from '@colors'
+import themes, { ThemeType } from '@themes'
 import { SettingAction } from 'actions/settings'
 import { ThemeAction } from 'actions/theme'
 
