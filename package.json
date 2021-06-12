@@ -1,7 +1,7 @@
 {
-  "name": "react-native-typescript-boilerplate",
-  "version": "2.0.1",
-  "description": "A lot of fundamental features with Typescript support React Native Boilerplate",
+  "name": "endless-math",
+  "version": "1.0.0",
+  "description": "Endless Math for practising math",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
