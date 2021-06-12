@@ -1,31 +1,52 @@
-import React, { Component } from "react";
-import { View, TouchableOpacity } from "react-native";
-import * as NavigationService from "react-navigation-helpers";
-/**
- * ? Local Imports
- */
-import colors from "@colors";
-import styles from "./HomeScreen.style";
-import { SCREENS } from "@shared-constants";
-import Text from "@shared-components/text-wrapper/TextWrapper";
+import React, { Component } from 'react'
+import { Image } from 'react-native'
+import { connect } from 'react-redux'
 
-interface IProps {}
+// import Button from '../../shared/Components/Button'
+import CustomIcon from '../../shared/components/CustomIcon/CustomIcon'
+import styles from "./HomeScreen.style"
+import { APP_ROUTE } from '@shared-constants'
+import themes from '@theme'
+
+import { StyledContainer } from '../../shared/components/StyledViews/index'
+import Button from '@shared-components/Button/Button'
+import * as NavigationService from "react-navigation-helpers";
+import { SettingsStateType } from 'reducers/settings'
+interface IProps {
+  theme: typeof themes.pink,
+}
 
 interface IState {}
 
-export default class HomeScreen extends Component<IProps, IState> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text h1> HomeScreen </Text>
-        <TouchableOpacity
-          style={styles.buttonStyle}
-          onPress={() => NavigationService.navigate(SCREENS.DETAIL)}
-        >
-          <Text color={colors.light.white}>Go To Detail Screen</Text>
-        </TouchableOpacity>
-        <Text h5></Text>
-      </View>
-    );
-  }
+class HomeScreen extends Component<IProps, IState> {
+    render() {
+        const { theme } = this.props
+        return (
+            <StyledContainer theme={this.props.theme}>
+                <Image source={theme.logo} />
+                <CustomIcon icon={'diamond'} size={30} />
+                <Button
+                    text='Aloita pelaaminen'
+                    style={[styles.buttonStyle, { backgroundColor: theme.primary }]}
+                    onPress={() => NavigationService.navigate(APP_ROUTE.GAMES)}
+                    icon
+                    iconName={'diamond'}
+                    size={30}
+                    iconColor={theme.decorative}
+                    iconNoMargin
+                />
+                <Button
+                    text='Asetukset'
+                    style={[styles.settingsButton, { backgroundColor: theme.primary }]}
+                    onPress={() => NavigationService.navigate(APP_ROUTE.SETTINGS)}
+                />
+            </StyledContainer>
+        )
+    }
 }
+
+const mapStateToProps = ({settings}: SettingsStateType) => ({
+    theme: settings.theme
+})
+
+export default connect(mapStateToProps)(HomeScreen)

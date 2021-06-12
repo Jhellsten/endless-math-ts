@@ -1,39 +1,33 @@
-import { ViewStyle, TextStyle, StyleSheet } from "react-native";
-
+import { ViewStyle, TextStyle, StyleSheet, TouchableOpacityProps } from "react-native";
+import themes from '@theme'
+import { dimensions, colors } from '@theme-variables';
+import { mixins } from '@mixins'
 interface Style {
-  container: ViewStyle;
-  buttonStyle: ViewStyle;
-  titleTextStyle: TextStyle;
-  buttonTextStyle: TextStyle;
+  buttonStyle: TouchableOpacityProps;
+  containerStyle: ViewStyle;
+  settingsButton: TextStyle;
+  textStyle: TextStyle;
 }
 
 export default StyleSheet.create<Style>({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  titleTextStyle: {
-    fontSize: 32,
-  },
   buttonStyle: {
-    height: 45,
-    width: "90%",
-    marginTop: 32,
-    borderRadius: 12,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#5931FF",
-    shadowRadius: 5,
-    shadowOpacity: 0.7,
-    shadowColor: "#A58FFF",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-  },
-  buttonTextStyle: {
-    color: "#fdfdfd",
-    fontWeight: "700",
-  },
+    borderColor: themes.mint.support,
+    borderRadius: 10,
+    borderWidth: dimensions.border.small,
+    width: '50%'
+},
+containerStyle: {
+    ...mixins.container
+},
+settingsButton: {
+    borderColor: themes.mint.support,
+    borderRadius: 10,
+    borderWidth: dimensions.border.small,
+    margin: 20,
+    width: '50%'
+},
+textStyle: {
+    ...mixins.mediumText,
+    color: colors.blue
+}
 });
