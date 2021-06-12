@@ -1,15 +1,15 @@
 import LocalizedStrings from "react-native-localization";
 
 export const localStrings = new LocalizedStrings({
-  "tr-TR": {
+  fi: {
     noLocationService: "Lokasyon Servisi Kapalı",
-    logout: "Çıkış",
-    yes: "Evet",
-    no: "Hayır",
-    cancel: "İptal",
-    areYouSure: "Emin misiniz?",
-    logoutDesc: "Çıkış yapmak üzeresiniz onaylıyor musunuz?",
-    noInternet: "İnternet Bağlantısı Yok",
+    logout: "Kirjaudu ulos",
+    yes: "Kyllä",
+    no: "Ei",
+    cancel: "Peruuta",
+    areYouSure: "Oletko varma?",
+    logoutDesc: "Haluatko kirjautua ulos?",
+    noInternet: "Ei internet yhteyttä",
   },
   en: {
     noLocationService: "Location Service Not Available",
@@ -23,4 +23,4 @@ export const localStrings = new LocalizedStrings({
   },
 });
 // ? Set the language manually
-localStrings.setLanguage("tr");
+localStrings.setLanguage("fi");
