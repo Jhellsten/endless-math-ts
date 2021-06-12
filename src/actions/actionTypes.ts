@@ -1,0 +1,12 @@
+export const CHANGE_THEME = 'CHANGE_THEME'
+
+export const DECREASE = 'DECREASE'
+
+export const SHOW_ERROR = 'SHOW_ERROR'
+export const HIDE_ERROR = 'HIDE_ERROR'
+
+export const GENERATE_GAME = 'GENERATE_GAME'
+export const CHANGE_GAME_ANSWER = 'CHANGE_GAME_ANSWER'
+export const CHANGE_OPERATOR = 'CHANGE_OPERATOR'
+
+export const CHANGE_SETTING = 'CHANGE_SETTING'

@@ -4,8 +4,7 @@ import { StatusBar } from "react-native";
 import Navigation from "./src/services/navigation";
 import { isAndroid } from "@freakycoder/react-native-helpers";
 import AnimatedSplash from "react-native-animated-splash-screen";
-
-console.disableYellowBox = true;
+// import ErrorHandler from 'shared/hocs/ErrorHandler';
 
 const App = () => {
   const [isLoaded, setIsLoaded] = React.useState(false);
@@ -24,15 +23,19 @@ const App = () => {
   return (
     <>
       <AnimatedSplash
-        logoWidth={300}
-        logoHeight={300}
-        logoImage={null}
-        isLoaded={isLoaded}
-        backgroundColor={null}
-        imageBackgroundResizeMode="cover"
-        imageBackgroundSource={require("./src/assets/splash/lucas-benjamin-unsplash.jpg")}
-      >
-        <Navigation />
+          logoWidth={300}
+          logoHeight={300}
+          logoImage={null}
+          isLoaded={isLoaded}
+          backgroundColor={null}
+          imageBackgroundResizeMode="cover"
+          imageBackgroundSource={require("@assets/splash/splash.png")}
+        >
+        {/* <ErrorHandler> */}
+          
+            <Navigation />
+          
+        {/* </ErrorHandler>r */}
       </AnimatedSplash>
     </>
   );
