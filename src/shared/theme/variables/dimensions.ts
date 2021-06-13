@@ -1,3 +1,5 @@
+import { Dimensions } from 'react-native'
+
 export default {
     fontSize: {
         medium: 20,
@@ -24,3 +26,5 @@ export default {
         smallRadius: 4
     }
 }
+
+export const { width, height } = Dimensions.get('window')

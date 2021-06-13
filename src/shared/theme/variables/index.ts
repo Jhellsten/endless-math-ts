@@ -1,4 +1,4 @@
 import colors from './colors'
-import dimensions from './dimensions'
+import dimensions, { width, height } from './dimensions'
 
-export { colors, dimensions }
+export { colors, dimensions, width, height }
