@@ -27,8 +27,8 @@ const settings = (state = initialState, action: SettingAction | ThemeAction) => 
     switch (action.type) {
         case actionTypes.CHANGE_SETTING:
             return { ...state, settings: { ...state.settings, [action.name]: action.value } }
-        // case actionTypes.CHANGE_THEME:
-        //     return { ...state, theme: initialState.selectableThemes[action.payload] }
+        case actionTypes.CHANGE_THEME:
+            return { ...state, theme: action.payload }
         default:
             return state
     }
