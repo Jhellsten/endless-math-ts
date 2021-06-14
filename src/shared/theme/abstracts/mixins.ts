@@ -1,6 +1,6 @@
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native'
 import { dimensions } from '../variables'
-import themes from '@theme'
+import themes from '@themes'
 interface Style {
     buttonContainer: ViewStyle;
     buttonRounded: ViewStyle;

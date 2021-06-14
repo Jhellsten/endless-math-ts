@@ -4,7 +4,7 @@ import * as NavigationService from "react-navigation-helpers";
 /**
  * ? Local Imports
  */
-import colors from "@colors";
+import {colors} from "@theme-variables";
 import styles from "./DetailScreen.style";
 import Text from "@shared-components/text-wrapper/TextWrapper";
 
@@ -17,7 +17,7 @@ export default class DetailScreen extends Component {
           style={styles.buttonStyle}
           onPress={() => NavigationService.goBack()}
         >
-          <Text color={colors.light.white}>Go back to Home</Text>
+          <Text color={colors.white}>Go back to Home</Text>
         </TouchableOpacity>
       </View>
     );
