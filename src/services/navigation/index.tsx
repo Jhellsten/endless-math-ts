@@ -7,11 +7,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 /**
  * ? Local Imports
  */
-import { SCREENS } from "@shared-constants";
+import { APP_ROUTE, SCREENS } from "@shared-constants";
 // ? Screens
 import HomeScreen from "@screens/home/HomeScreen";
 import SearchScreen from "@screens/search/SearchScreen";
 import DetailScreen from "@screens/detail/DetailScreen";
+import SettingsScreen from '@screens/settings/SettingsScreen';
 
 // ? If you want to use stack or tab or both
 const Tab = createBottomTabNavigator();
@@ -62,7 +63,8 @@ const Navigation = () => {
           headerShown: false,
         }}
       >
-        <Stack.Screen name={SCREENS.HOME} component={HomeScreen} />
+        <Stack.Screen name={APP_ROUTE.HOME} component={HomeScreen} />
+        <Stack.Screen name={APP_ROUTE.SETTINGS} component={SettingsScreen} />
         <Stack.Screen name={SCREENS.DETAIL}>
           {(props) => <DetailScreen {...props} />}
         </Stack.Screen>
