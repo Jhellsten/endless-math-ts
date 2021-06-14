@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import CustomIcon from '../../shared/components/CustomIcon/CustomIcon'
 import styles from "./HomeScreen.style"
 import { APP_ROUTE } from '@shared-constants'
-import themes from '@theme'
+import themes from '@themes'
 
 import { StyledContainer } from '../../shared/components/StyledViews/index'
 import Button from '@shared-components/Button/Button'
@@ -31,7 +31,7 @@ class HomeScreen extends Component<IProps, IState> {
                     onPress={() => NavigationService.navigate(APP_ROUTE.GAMES)}
                     icon
                     iconName={'diamond'}
-                    size={30}
+                    iconSize={30}
                     iconColor={theme.decorative}
                     iconNoMargin
                 />
@@ -45,8 +45,8 @@ class HomeScreen extends Component<IProps, IState> {
     }
 }
 
-const mapStateToProps = ({settings}: SettingsStateType) => ({
-    theme: settings.theme
+const mapStateToProps = (state: {settings: SettingsStateType}) => ({
+    theme: state.settings.theme
 })
 
 export default connect(mapStateToProps)(HomeScreen)
