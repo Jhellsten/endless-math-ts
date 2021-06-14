@@ -1,5 +1,5 @@
 import { ViewStyle, TextStyle, StyleSheet, TouchableOpacityProps } from "react-native";
-import themes from '@theme'
+import themes from '@themes'
 import { dimensions, colors } from '@theme-variables';
 import { mixins } from '@mixins'
 interface Style {
@@ -17,7 +17,7 @@ export default StyleSheet.create<Style>({
     width: '50%'
 },
 containerStyle: {
-    ...mixins.container
+    ...mixins.containerStyle
 },
 settingsButton: {
     borderColor: themes.mint.support,
