@@ -1,8 +1,9 @@
 import React from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Styles from './CustomIcon.styles'
-import themes from '@theme'
+import themes from '@themes'
 import { IconProps } from 'react-native-vector-icons/Icon'
+import { TextStyle } from 'react-native'
 
 
 type CustomIconProps = {
@@ -11,7 +12,7 @@ type CustomIconProps = {
     color?: string,
     noMargin?: boolean,
     onPress?: () => void,
-    style?: IconProps
+    style?: IconProps & TextStyle
 }
 
 const CustomIcon = ({
