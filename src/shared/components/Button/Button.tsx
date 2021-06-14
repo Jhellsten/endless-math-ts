@@ -11,7 +11,7 @@ import Styles from "./Button.styles"
 type ButtonProps = {
   onPress: () => void
   text: string
-  width?: number
+  width?: number | string,
   disabled?: boolean
   style: TouchableOpacityProps & any
   icon?: boolean
@@ -19,7 +19,7 @@ type ButtonProps = {
   iconColor?: string
   iconSize?: number
   iconNoMargin?: boolean
-  textColor?: string
+  textColor?: string,
   theme: ThemeType
 }
 
@@ -65,8 +65,8 @@ const Button = ({
   )
 }
 
-const mapStateToProps = ({ settings }: SettingsStateType) => ({
-  theme: settings.theme,
+const mapStateToProps = (state: { settings: SettingsStateType }) => ({
+  theme: state.settings.theme,
 })
 
 export default connect(mapStateToProps)(Button)
