@@ -8,11 +8,11 @@ import { TextStyle } from 'react-native'
 
 type CustomIconProps = {
     icon: string,
-    size: number,
+    size?: number,
     color?: string,
     noMargin?: boolean,
     onPress?: () => void,
-    style?: IconProps & TextStyle
+    style?: IconProps | TextStyle
 }
 
 const CustomIcon = ({
