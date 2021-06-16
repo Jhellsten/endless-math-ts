@@ -1,30 +1,41 @@
+import { GameOperators, GameTypes } from 'shared/types/game.type'
+
+export type CategoryType = {
+    title: GameTypes,
+    operator: GameOperators
+}
+
+export type CategoryStateType = {
+    categories: CategoryType[]
+}
+
 const initialState = {
     categories: [
         {
-            title: 'Yhteenlaskut',
-            operator: '+'
+            title: GameTypes.addition,
+            operator: GameOperators.addition
         },
         {
-            title: 'Vähennyslaskut',
-            operator: '-'
+            title: GameTypes.substraction,
+            operator: GameOperators.substraction
         },
         {
-            title: 'Kertolaskut',
-            operator: '*'
+            title: GameTypes.multiply,
+            operator: GameOperators.multiply
         },
         {
-            title: 'Jakolaskut',
-            operator: '/'
+            title: GameTypes.division,
+            operator: GameOperators.division
         },
         {
-            title: 'Kuva arvoitukset',
-            operator: ''
+            title: GameTypes.picturePuzzles,
+            operator: GameOperators.empty
         }
     ]
 }
 
-const categories = (state = initialState, action) => {
-    return { ...state }
+const categories = (state: CategoryStateType = initialState, action) => {
+    return state
 }
 
 export default categories
