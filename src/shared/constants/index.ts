@@ -1,3 +1,5 @@
+import { GameOperators } from 'shared/types/game.type';
+
 
 
 // ? Screens
@@ -35,7 +37,7 @@ export enum POSSIBLE_THEMES {
 }
 
 export const DIFFICULTIES = {
-    '*': [
+    [GameOperators.multiply]: [
         {
             title: 'Kertotaulut',
             options: {
@@ -65,10 +67,10 @@ export const DIFFICULTIES = {
             }
         }
     ],
-    '-': [{}],
-    '/': [{}],
-    '+': [{}],
-    '': [
+    [GameOperators.substraction]: [{}],
+    [GameOperators.division]: [{}],
+    [GameOperators.addition]: [{}],
+    [GameOperators.empty]: [
         {
             title: 'Helpot',
             options: {
