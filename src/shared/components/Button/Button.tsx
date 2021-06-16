@@ -1,5 +1,5 @@
 import React from "react"
-import { TouchableOpacity, Text, TouchableOpacityProps } from "react-native"
+import { TouchableOpacity, Text, TouchableOpacityProps, TextStyle } from "react-native"
 import { connect } from "react-redux"
 import { ThemeType } from "@themes"
 import { SettingsStateType } from "reducers/settings"
@@ -13,7 +13,7 @@ type ButtonProps = {
   text: string
   width?: number | string,
   disabled?: boolean
-  style: TouchableOpacityProps & any
+  style?: TouchableOpacityProps | TextStyle | any
   icon?: boolean
   iconName?: string
   iconColor?: string
