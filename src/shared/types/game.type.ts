@@ -2,10 +2,18 @@
 
 export enum GameOperators {
     empty = '',
-    plus = '+',
-    minus = '-',
+    addition = '+',
+    substraction = '-',
     multiply = '*',
-    divide = '/',
+    division = '/',
     smallerThan = '<',
     largerThan = '>'
+}
+
+export enum GameTypes {
+    addition = 'Yhteenlaskut',
+    substraction = 'Vähennyslaskut',
+    multiply = 'Kertolaskut',
+    division = 'Jakolaskut',
+    picturePuzzles = 'Kuva arvoitukset',
 }
