@@ -2,14 +2,13 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 import { createStore } from 'redux'
 import { persistReducer, persistStore } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
 // import { composeWithDevTools } from 'remote-redux-devtools'
 
 import index from '../../reducers/index'
 
 const persistConfig = {
     key: 'endless_math',
-    storage
+    storage: AsyncStorage
 }
 
 const persistedReducer = persistReducer(persistConfig, index)
