@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { View } from 'react-native'
-import styles from './NextSteps.styles'
+import styles from './NextSteps.style'
 import { APP_ROUTE } from '@shared-constants'
 import Button from '@shared-components/Button/Button'
 import { ThemeType } from '@themes'
