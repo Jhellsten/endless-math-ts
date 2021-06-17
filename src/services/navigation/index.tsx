@@ -13,6 +13,7 @@ import HomeScreen from "@screens/home/HomeScreen";
 import SearchScreen from "@screens/search/SearchScreen";
 import GamesScreen from "@screens/games/GamesScreen";
 import SettingsScreen from '@screens/settings/SettingsScreen';
+import BasicGame from '@screens/basicGame/BasicGame';
 
 // ? If you want to use stack or tab or both
 const Tab = createBottomTabNavigator();
@@ -66,6 +67,7 @@ const Navigation = () => {
         <Stack.Screen name={APP_ROUTE.HOME} component={HomeScreen} />
         <Stack.Screen name={APP_ROUTE.SETTINGS} component={SettingsScreen} />
         <Stack.Screen name={APP_ROUTE.GAMES} component={GamesScreen} />
+        <Stack.Screen name={APP_ROUTE.BASIC_GAME} component={BasicGame} />
       </Stack.Navigator>
     </NavigationContainer>
   );
