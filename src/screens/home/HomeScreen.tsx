@@ -24,13 +24,13 @@ class HomeScreen extends Component<IProps, IState> {
         return (
             <StyledContainer theme={this.props.theme}>
                 <Image source={theme.logo} />
-                <CustomIcon icon={'diamond'} size={30} />
+                <CustomIcon icon={'gem'} size={30} />
                 <Button
                     text='Aloita pelaaminen'
                     style={[styles.buttonStyle, { backgroundColor: theme.primary }]}
                     onPress={() => NavigationService.navigate(APP_ROUTE.GAMES)}
                     icon
-                    iconName={'diamond'}
+                    iconName={'gem'}
                     iconSize={30}
                     iconColor={theme.decorative}
                     iconNoMargin

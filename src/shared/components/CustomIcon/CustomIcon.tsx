@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 import Styles from './CustomIcon.styles'
 import themes from '@themes'
 import { IconProps } from 'react-native-vector-icons/Icon'
