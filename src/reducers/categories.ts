@@ -29,7 +29,7 @@ const initialState = {
         },
         {
             title: GameTypes.picturePuzzles,
-            operator: GameOptions.empty
+            operator: GameOptions.picture
         }
     ]
 }
