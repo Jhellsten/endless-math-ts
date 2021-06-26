@@ -77,7 +77,7 @@ class Games extends Component<IProps, IState> {
                                     shouldShowOptions: false,
                                     hasOptions: true
                                 })
-                                : operator === GameOptions.empty
+                                : operator === GameOptions.picture
                                 ? navigate(APP_ROUTE.PUZZLE_GAME, {
                                       title: difficulty.title,
                                       operator: operator,
@@ -124,7 +124,7 @@ class Games extends Component<IProps, IState> {
                     style={styles.scrollContainerStyle}
                     contentContainerStyle={styles.innerContainerStyle}
                 >
-                    <CustomIcon icon={'diamond'} style={styles.iconStyle} />
+                    <CustomIcon icon={'gem'} style={styles.iconStyle} />
                     {operator !==  GameOptions.multiply ? (
                         <StyledText theme={theme}>Valitse peli</StyledText>
                     ) : (
