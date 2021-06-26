@@ -28,6 +28,6 @@ settingsButton: {
 },
 textStyle: {
     ...mixins.mediumText,
-    color: colors.blue
+    color: colors.blue,
 }
 });

@@ -22,12 +22,12 @@ export const SETTINGS_OPTIONS = {
     numberOfRows: 'Rivien määrä'
 }
 
-export const puzzleSets = {
-    girl: { icons: ['diamond', 'heart', 'snowflake-o'], color: '#FED32B' },
-    emoji: { icons: ['angry', 'dizzy', 'grimace'], color: '#FED32B' },
-    emoji1: { icons: ['grin', 'grin-stars', 'grin-squint'], color: '#FED32B' },
-    emoji2: { icons: ['kiss', 'meh-blank', 'sad-cry'], color: '#FED32B' }
-}
+export const puzzleSets = [
+    { icons: ['gem', 'heart', 'snowflake-o'], color: '#FED32B' },
+    { icons: ['angry', 'dizzy', 'grimace'], color: '#FED32B' },
+    { icons: ['grin', 'grin-stars', 'grin-squint'], color: '#FED32B' },
+    { icons: ['kiss', 'meh-blank', 'sad-cry'], color: '#FED32B' }
+]
 
 export enum POSSIBLE_THEMES {
   'pink',

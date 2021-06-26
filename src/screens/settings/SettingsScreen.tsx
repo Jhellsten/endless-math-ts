@@ -42,7 +42,6 @@ class Settings extends Component<IProps, IState> {
     }
     _renderThemeSelection() {
         const { themes, changeTheme } = this.props
-        console.log(themes)
         return Object.keys(themes).map((theme: keyof typeof themes, index: number) => {
             return (
                 <View key={index}>
