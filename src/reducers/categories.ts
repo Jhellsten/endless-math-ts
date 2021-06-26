@@ -1,8 +1,8 @@
-import { GameOperators, GameTypes } from 'shared/types/game.type'
+import { GameOptions, GameTypes } from 'shared/types/game.type'
 
 export type CategoryType = {
     title: GameTypes,
-    operator: GameOperators
+    operator: GameOptions
 }
 
 export type CategoryStateType = {
@@ -13,28 +13,28 @@ const initialState = {
     categories: [
         {
             title: GameTypes.addition,
-            operator: GameOperators.addition
+            operator: GameOptions.addition
         },
         {
             title: GameTypes.substraction,
-            operator: GameOperators.substraction
+            operator: GameOptions.substraction
         },
         {
             title: GameTypes.multiply,
-            operator: GameOperators.multiply
+            operator: GameOptions.multiply
         },
         {
             title: GameTypes.division,
-            operator: GameOperators.division
+            operator: GameOptions.division
         },
         {
             title: GameTypes.picturePuzzles,
-            operator: GameOperators.empty
+            operator: GameOptions.empty
         }
     ]
 }
 
-const categories = (state: CategoryStateType = initialState, action) => {
+const categories = (state: CategoryStateType = initialState) => {
     return state
 }
 
