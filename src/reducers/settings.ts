@@ -7,7 +7,7 @@ export type SettingsStateType = {
     theme: ThemeType,
     selectableThemes: typeof themes,
     settings: {
-        numberOfRows: number
+        numberOfRows: string 
     }
 }
 
@@ -19,7 +19,7 @@ const initialState: SettingsStateType = {
         ...themes
     },
     settings: {
-        numberOfRows: 15
+        numberOfRows: '15'
     }
 }
 
