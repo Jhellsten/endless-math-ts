@@ -8,7 +8,8 @@ import index from '../../reducers/index'
 
 const persistConfig = {
     key: 'endless_math',
-    storage: AsyncStorage
+    storage: AsyncStorage,
+    blacklist: ['category']
 }
 
 const persistedReducer = persistReducer(persistConfig, index)
