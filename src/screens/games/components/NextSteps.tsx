@@ -7,14 +7,14 @@ import { ThemeType } from '@themes'
 import { GameOperators } from 'shared/types/game.type'
 
 interface IProps {
-    navigation: any,
+    navigate: (routeName: string, params?: any) => void,
     type: string,
     operator: GameOperators,
     options: any,
     theme: ThemeType,
 }
 
-export default function NextSteps({ navigation, type, operator, options, theme }: IProps): JSX.Element {
+export default function NextSteps({ navigate, type, operator, options, theme }: IProps): JSX.Element {
     const renderNextStep = () => {
         const opts = []
         for (let i = 1; i + 1 < options.max; i++) {
@@ -24,7 +24,7 @@ export default function NextSteps({ navigation, type, operator, options, theme }
                         // theme={theme}
                         style={styles.buttonContainer}
                         onPress={() =>
-                            navigation.navigate(APP_ROUTE.BASIC_GAME, {
+                            navigate(APP_ROUTE.BASIC_GAME, {
                                 title: type,
                                 operator: operator,
                                 min: i,
