@@ -18,7 +18,7 @@ export const changeOperator = (operator: string) => ({
 })
 
 type ChangeAnswer = {
-    payload: string | number,
+    payload: string,
     index: number,
     type: "CHANGE_GAME_ANSWER"
 }
@@ -27,7 +27,7 @@ type GenerateGame = {
     type: "GENERATE_GAME"
 }
 type ChangeOperator = {
-    payload: string | number,
+    payload: string,
     type: "CHANGE_OPERATOR"
 }
 
