@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, Alert } from 'react-native'
 
 import styles from './styles'
 // import { hideError } from '../../actions/error'
-import colors from '@theme'
+import themes from '@themes'
 
 type errorState = {
     UIError: boolean
@@ -55,7 +55,7 @@ class ErrorHandler extends React.Component<errorProps & any, errorState> {
                     <View style={styles.innerContainer}>
                         <Text style={styles.text}>Something went wrong!</Text>
                         <TouchableOpacity onPress={this.clickHandler} style={styles.button}>
-                            <Text style={[styles.text, { color: colors.mint.primary }]}>Go back!</Text>
+                            <Text style={[styles.text, { color: themes.mint.primary }]}>Go back!</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
