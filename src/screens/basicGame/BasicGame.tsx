@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Dispatch } from 'redux'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -13,7 +14,7 @@ import Button from '@shared-components/Button/Button'
 import { mixins } from '@mixins'
 import Header from '@shared-components/Header/Header'
 import CustomInput from '@shared-components/CustomInput/CustomInput'
-import { GameOperators } from 'shared/types/game.type'
+import { GameOperators, GameTypes } from 'shared/types/game.type'
 import { ThemeType } from '@themes'
 
 type IState = {
@@ -56,14 +57,12 @@ class BasicGame extends Component<IProps, IState> {
 
     generateGame() {
         const { operator, min, title } = this.props.route.params
-        if (operator === GameOperators.empty) {
-        }
         const games = this.props.numberOfRows || 10
         const game = []
         const max = this.props.route.params.max || operator === GameOperators.substraction || operator === GameOperators.division ? 11 : 10
-        console.log(title)
+        console.log(title, max, min, this.props.route)
         let tries = 0
-        if (title === 'Kertotaulut') {
+        if (title === GameTypes.multiply) {
             for (let index = 0; index < max; index++) {
                 game.push({
                     calculation: `${min} ${operator} ${index + 1} =`,
@@ -90,14 +89,6 @@ class BasicGame extends Component<IProps, IState> {
                         operator === GameOperators.substraction || operator === GameOperators.division
                             ? Math.ceil(Math.random() * Math.floor(number1))
                             : Math.ceil(Math.random() * Math.floor(max))
-                    console.log(
-                        number1,
-                        number2,
-                        game.some(
-                            existingGame =>
-                                existingGame.correctAnswer === calculate(operator, number1, number2)
-                        )
-                    )
                     tries++
                     if (tries + games + 50) {
                         break
@@ -198,8 +189,8 @@ const mapStateToProps = (state: {settings: SettingsStateType, game: any}) => ({
     theme: state.settings.theme
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    generateGame: game => dispatch(Game.generateGame(game)),
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    generateGame: (game) => dispatch(Game.generateGame(game)),
     changeAnswer: (answer: number, index: number) => dispatch(Game.changeAnswer(answer, index)),
     changeOperator: (operator: GameOperators) => dispatch(Game.changeOperator(operator))
 })
