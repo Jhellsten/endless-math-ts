@@ -23,7 +23,7 @@ export const SETTINGS_OPTIONS = {
 }
 
 export const puzzleSets = {
-    girl: { icons: ['diamond', 'heart', 'snowflake-o'] },
+    girl: { icons: ['diamond', 'heart', 'snowflake-o'], color: '#FED32B' },
     emoji: { icons: ['angry', 'dizzy', 'grimace'], color: '#FED32B' },
     emoji1: { icons: ['grin', 'grin-stars', 'grin-squint'], color: '#FED32B' },
     emoji2: { icons: ['kiss', 'meh-blank', 'sad-cry'], color: '#FED32B' }
