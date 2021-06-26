@@ -14,15 +14,16 @@ import Button from '@shared-components/Button/Button'
 import { mixins } from '@mixins'
 import Header from '@shared-components/Header/Header'
 import CustomInput from '@shared-components/CustomInput/CustomInput'
-import { GameOperators, GameTypes } from 'shared/types/game.type'
+import { GameObjectType, GameOperators } from 'shared/types/game.type'
 import { ThemeType } from '@themes'
+import { TitleTypes } from '@shared-constants'
 
 type IState = {
     answered: boolean
 }
 
 type IProps = {
-    game: any,
+    game: GameObjectType[],
     operator: GameOperators,
     route: any,
     generateGame: ([]) => void,
@@ -56,13 +57,11 @@ class BasicGame extends Component<IProps, IState> {
     }
 
     generateGame() {
-        const { operator, min, title } = this.props.route.params
+        const { operator, min, title, max } = this.props.route.params
         const games = this.props.numberOfRows || 10
         const game = []
-        const max = this.props.route.params.max || operator === GameOperators.substraction || operator === GameOperators.division ? 11 : 10
-        console.log(title, max, min, this.props.route)
         let tries = 0
-        if (title === GameTypes.multiply) {
+        if (title === TitleTypes.multiplyTable) {
             for (let index = 0; index < max; index++) {
                 game.push({
                     calculation: `${min} ${operator} ${index + 1} =`,
@@ -110,25 +109,26 @@ class BasicGame extends Component<IProps, IState> {
     }
 
     _renderQuestions() {
-        if (!Array.isArray(this.props.game)) {
+        const { theme, changeAnswer, game: games } = this.props
+        if (!Array.isArray(games)) {
             return
         }
-        return this.props.game.map((game, index) => {
+        return games.map((game, index) => {
             const correctAnswer = Number(game.answer) === game.correctAnswer
             return (
                 <View style={styles.gameRowStyle} key={index}>
-                    <StyledText theme={this.props.theme} style={styles.textRowStyle}>
+                    <StyledText theme={theme} style={styles.textRowStyle}>
                         {game.calculation}
                     </StyledText>
                     <CustomInput
                         width={'20%'}
-                        value={this.props.game[index].answer}
+                        value={games[index].answer}
                         keyboardType={'number-pad'}
-                        onChangeText={text => this.props.changeAnswer(text, index)}
+                        onChangeText={text => changeAnswer(text, index)}
                         editable={!this.state.answered}
                     ></CustomInput>
 
-                    <StyledText theme={this.props.theme} style={styles.textRowStyle}>
+                    <StyledText theme={theme} style={styles.textRowStyle}>
                         {correctAnswer && this.state.answered
                             ? 'Oikein!'
                             : this.state.answered && game.answer !== ''
@@ -190,7 +190,7 @@ const mapStateToProps = (state: {settings: SettingsStateType, game: any}) => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    generateGame: (game) => dispatch(Game.generateGame(game)),
+    generateGame: (game: GameObjectType[]) => dispatch(Game.generateGame(game)),
     changeAnswer: (answer: number, index: number) => dispatch(Game.changeAnswer(answer, index)),
     changeOperator: (operator: GameOperators) => dispatch(Game.changeOperator(operator))
 })
