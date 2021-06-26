@@ -36,57 +36,130 @@ export enum POSSIBLE_THEMES {
   'dark'
 }
 
+export enum TitleTypes {
+    easy = 'Helpot',
+    medium = 'Tavalliset',
+    hard = 'Vaikeat',
+    multiplyTable = 'Kertotaulut',
+
+}
+
+export type GameOptionsType = {
+    min: number,
+    max: number
+}
+
 export const DIFFICULTIES = {
     [GameOperators.multiply]: [
         {
-            title: 'Kertotaulut',
+            title: TitleTypes.multiplyTable,
             options: {
                 min: 1,
                 max: 12
             }
         },
         {
-            title: 'Helpot',
+            title: TitleTypes.easy,
             options: {
                 min: 1,
                 max: 10
             }
         },
         {
-            title: 'Tavalliset',
+            title: TitleTypes.medium,
             options: {
                 min: 1,
                 max: 20
             }
         },
         {
-            title: 'Vaikeat',
+            title: TitleTypes.hard,
             options: {
                 min: 4,
                 max: 100
             }
         }
     ],
-    [GameOperators.substraction]: [{}],
-    [GameOperators.division]: [{}],
-    [GameOperators.addition]: [{}],
+    [GameOperators.substraction]: [{
+        title: TitleTypes.easy,
+        options: {
+            min: 1,
+            max: 10
+        }
+    },
+    {
+        title: TitleTypes.medium,
+        options: {
+            min: 20,
+            max: 100
+        }
+    },
+    {
+        title: TitleTypes.hard,
+        options: {
+            min: 40,
+            max: 300
+        }
+    }],
+    [GameOperators.division]: [{
+        title: TitleTypes.easy,
+        options: {
+            min: 1,
+            max: 20
+        }
+    },
+    {
+        title: TitleTypes.medium,
+        options: {
+            min: 5,
+            max: 40
+        }
+    },
+    {
+        title: TitleTypes.hard,
+        options: {
+            min: 4,
+            max: 100
+        }
+    }],
+    [GameOperators.addition]: [{
+        title: TitleTypes.easy,
+        options: {
+            min: 5,
+            max: 20
+        }
+    },
+    {
+        title: TitleTypes.medium,
+        options: {
+            min: 10,
+            max: 50
+        }
+    },
+    {
+        title: TitleTypes.hard,
+        options: {
+            min: 30,
+            max: 500
+        }
+    }],
     [GameOperators.empty]: [
         {
-            title: 'Helpot',
+            title: TitleTypes.easy,
             options: {
                 min: 1,
                 max: 5
             }
         },
         {
-            title: 'Tavalliset',
+            title: TitleTypes.medium,
             options: {
                 min: 3,
                 max: 10
             }
         },
         {
-            title: 'Vaikeat',
+            title: TitleTypes.hard,
             options: {
                 min: 4,
                 max: 9

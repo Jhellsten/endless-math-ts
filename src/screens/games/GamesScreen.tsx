@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 
-import { APP_ROUTE, DIFFICULTIES } from '@shared-constants'
+import { APP_ROUTE, DIFFICULTIES, GameOptionsType, TitleTypes } from '@shared-constants'
 import NextSteps from './components/NextSteps'
 import styles from './GamesScreen.style'
 import { ThemeType } from '@themes'
@@ -13,7 +13,6 @@ import Button from '@shared-components/Button/Button'
 import { StyledContainer, StyledText } from '@shared-components/StyledViews'
 import Header from '@shared-components/Header/Header'
 import CustomIcon from '@shared-components/CustomIcon/CustomIcon'
-import navigation from '@services/navigation'
 import { GameOperators, GameTypes } from 'shared/types/game.type'
 
 interface IProps {
@@ -22,18 +21,22 @@ interface IProps {
 }
 
 interface IState {
-    operator: GameOperators | null,
-    type: string | null,
-    options: {}
+    operator: GameOperators,
+    type: string,
+    options: {},
+    shouldShowOptions: boolean,
+    hasOptions: boolean
 }
 
 class Games extends Component<IProps, IState> {
     constructor(props) {
         super(props)
         this.state = {
-            operator: null,
+            operator: GameOperators.empty,
             type: '',
-            options: {}
+            options: {},
+            shouldShowOptions: false,
+            hasOptions: false
         }
     }
 
@@ -47,16 +50,9 @@ class Games extends Component<IProps, IState> {
                             
                             { backgroundColor: theme.primary, color: theme.secondary }
                         ]}
-                        onPress={() =>
-                            category.operator === GameOperators.multiply || category.operator === GameOperators.empty
-                                ? this.setState({
-                                      operator: category.operator
-                                  })
-                                :  navigate(APP_ROUTE.BASIC_GAME, {
-                                      title: category.title,
+                        onPress={() => this.setState({
                                       operator: category.operator,
-                                      min: 1,
-                                      max: 10
+                                      shouldShowOptions: true
                                   })
                         }
                         text={category.title}
@@ -68,26 +64,32 @@ class Games extends Component<IProps, IState> {
 
     _renderDifficulties() {
         const { operator } = this.state
-        return DIFFICULTIES[operator].map((difficulty: {title: string, options: {}}, index: number) => {
+        return DIFFICULTIES[operator].map((difficulty: {title: TitleTypes, options: GameOptionsType}, index: number) => {
             return (
                 <View style={styles.buttonContainerStyle} key={index}>
                     <Button
                         // style={styles.button}
                         onPress={() =>
-                            difficulty.title !== GameTypes.multiply && operator !== GameOperators.empty
-                                ? navigate(APP_ROUTE.BASIC_GAME, {
-                                      title: difficulty.title,
-                                      operator: operator
-                                  })
+                            difficulty.title === TitleTypes.multiplyTable
+                                ? this.setState({
+                                    type: difficulty.title,
+                                    options: difficulty.options,
+                                    shouldShowOptions: false,
+                                    hasOptions: true
+                                })
                                 : operator === GameOperators.empty
                                 ? navigate(APP_ROUTE.PUZZLE_GAME, {
                                       title: difficulty.title,
-                                      operator: operator
+                                      operator: operator,
+                                      min: difficulty.options?.min,
+                                      max: difficulty.options?.max
                                   })
-                                : this.setState({
-                                      type: difficulty.title,
-                                      options: difficulty.options
-                                  })
+                                : navigate(APP_ROUTE.BASIC_GAME, {
+                                    title: difficulty.title,
+                                    operator: operator,
+                                    min: difficulty.options?.min,
+                                    max: difficulty.options?.max
+                                })
                         }
                         text={difficulty.title}
                     ></Button>
@@ -98,17 +100,24 @@ class Games extends Component<IProps, IState> {
 
     render() {
         // TODO simplify logic
-        const { operator, type, options } = this.state
+        const { operator, type, options, shouldShowOptions, hasOptions } = this.state
+        console.log('type', type,'operator', operator,'options', options)
         const { theme } = this.props
         return (
             <StyledContainer theme={theme} style={styles.containerStyle}>
                 <Header
                     goBack={() =>
-                        operator || operator === GameOperators.empty
-                            ? this.setState({
-                                  operator: null,
-                                  type: null
-                              })
+                        shouldShowOptions
+                            ? hasOptions ? this.setState({
+                                  operator: GameOperators.empty,
+                                  shouldShowOptions: true,
+                                  
+                              }) : this.setState({
+                                operator: GameOperators.empty,
+                                type: '',
+                                shouldShowOptions: false,
+                                
+                            })
                             : goBack()
                     }
                     back={true}
@@ -118,29 +127,32 @@ class Games extends Component<IProps, IState> {
                     contentContainerStyle={styles.innerContainerStyle}
                 >
                     <CustomIcon icon={'diamond'} style={styles.iconStyle} />
-                    {operator !==  GameOperators.multiply && operator !== GameOperators.empty ? (
+                    {operator !==  GameOperators.multiply ? (
                         <StyledText theme={theme}>Valitse peli</StyledText>
                     ) : (
                         <StyledText
                             theme={theme}
                             onPress={() =>
+                                hasOptions ? this.setState({
+                                    shouldShowOptions: true,
+                                    hasOptions: false
+                                }) :
                                 this.setState({
                                     operator: GameOperators.empty,
-                                    type: ''
+                                    type: '',
+                                    shouldShowOptions: false
                                 })
                             }
                         >
                             Edellinen
                         </StyledText>
                     )}
-                    {operator !== GameOperators.multiply && operator !==  GameOperators.empty && this._renderCategories()}
-                    {(operator === GameOperators.multiply || operator ===  GameOperators.empty) &&
-                        type !== GameTypes.multiply &&
-                        this._renderDifficulties()}
-                    {operator && type === GameTypes.multiply && (
+                    {!shouldShowOptions && !hasOptions && this._renderCategories()}
+                    {shouldShowOptions && this._renderDifficulties()}
+                    {hasOptions && type === TitleTypes.multiplyTable && (
                         <NextSteps
                             // scrollContainer={styles.scrollContainerStyle}
-                            navigation={navigation}
+                            navigate={navigate}
                             operator={operator}
                             type={type}
                             theme={theme}
@@ -158,7 +170,5 @@ const mapStateToProps = (state: {settings: SettingsStateType, categories: Catego
     theme: state.settings.theme
 })
 
-const mapDispatchToProps = dispatch => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Games)
+export default connect(mapStateToProps, null)(Games)
 
