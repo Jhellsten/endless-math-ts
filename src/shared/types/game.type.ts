@@ -10,6 +10,15 @@ export enum GameOperators {
     largerThan = '>'
 }
 
+export enum GameOptions {
+    empty = '',
+    addition = '+',
+    substraction = '-',
+    multiply = '*',
+    division = '/',
+    picture = 'picture'
+}
+
 export enum GameTypes {
     addition = 'Yhteenlaskut',
     substraction = 'Vähennyslaskut',
@@ -21,5 +30,5 @@ export enum GameTypes {
 export type GameObjectType = {
     calculation: string,
     correctAnswer: number,
-    answer: string | number
+    answer: string
 }
