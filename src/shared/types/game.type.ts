@@ -32,3 +32,12 @@ export type GameObjectType = {
     correctAnswer: number,
     answer: string
 }
+
+export type PuzzleGameObjectType = {
+    answer: string
+    correctAnswer: string,
+    operator: string,
+    icons: string[],
+    icon: string,
+    color: string,
+}
