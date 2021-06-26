@@ -13,7 +13,7 @@ import Button from '@shared-components/Button/Button'
 import { StyledContainer, StyledText } from '@shared-components/StyledViews'
 import Header from '@shared-components/Header/Header'
 import CustomIcon from '@shared-components/CustomIcon/CustomIcon'
-import { GameOperators, GameTypes } from 'shared/types/game.type'
+import { GameOptions } from 'shared/types/game.type'
 
 interface IProps {
     theme: ThemeType,
@@ -21,7 +21,7 @@ interface IProps {
 }
 
 interface IState {
-    operator: GameOperators,
+    operator: GameOptions,
     type: string,
     options: {},
     shouldShowOptions: boolean,
@@ -32,7 +32,7 @@ class Games extends Component<IProps, IState> {
     constructor(props: IProps) {
         super(props)
         this.state = {
-            operator: GameOperators.empty,
+            operator: GameOptions.empty,
             type: '',
             options: {},
             shouldShowOptions: false,
@@ -77,7 +77,7 @@ class Games extends Component<IProps, IState> {
                                     shouldShowOptions: false,
                                     hasOptions: true
                                 })
-                                : operator === GameOperators.empty
+                                : operator === GameOptions.empty
                                 ? navigate(APP_ROUTE.PUZZLE_GAME, {
                                       title: difficulty.title,
                                       operator: operator,
@@ -99,9 +99,7 @@ class Games extends Component<IProps, IState> {
     }
 
     render() {
-        // TODO simplify logic
         const { operator, type, options, shouldShowOptions, hasOptions } = this.state
-        console.log('type', type,'operator', operator,'options', options)
         const { theme } = this.props
         return (
             <StyledContainer theme={theme} style={styles.containerStyle}>
@@ -109,11 +107,11 @@ class Games extends Component<IProps, IState> {
                     goBack={() =>
                         shouldShowOptions
                             ? hasOptions ? this.setState({
-                                  operator: GameOperators.empty,
+                                  operator: GameOptions.empty,
                                   shouldShowOptions: true,
                                   
                               }) : this.setState({
-                                operator: GameOperators.empty,
+                                operator: GameOptions.empty,
                                 type: '',
                                 shouldShowOptions: false,
                                 
@@ -127,7 +125,7 @@ class Games extends Component<IProps, IState> {
                     contentContainerStyle={styles.innerContainerStyle}
                 >
                     <CustomIcon icon={'diamond'} style={styles.iconStyle} />
-                    {operator !==  GameOperators.multiply ? (
+                    {operator !==  GameOptions.multiply ? (
                         <StyledText theme={theme}>Valitse peli</StyledText>
                     ) : (
                         <StyledText
@@ -138,7 +136,7 @@ class Games extends Component<IProps, IState> {
                                     hasOptions: false
                                 }) :
                                 this.setState({
-                                    operator: GameOperators.empty,
+                                    operator: GameOptions.empty,
                                     type: '',
                                     shouldShowOptions: false
                                 })

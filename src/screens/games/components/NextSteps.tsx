@@ -4,17 +4,17 @@ import styles from './NextSteps.style'
 import { APP_ROUTE } from '@shared-constants'
 import Button from '@shared-components/Button/Button'
 import { ThemeType } from '@themes'
-import { GameOperators } from 'shared/types/game.type'
+import { GameOptions } from 'shared/types/game.type'
 
 interface IProps {
     navigate: (routeName: string, params?: any) => void,
     type: string,
-    operator: GameOperators,
+    operator: GameOptions,
     options: any,
     theme: ThemeType,
 }
 
-export default function NextSteps({ navigate, type, operator, options, theme }: IProps): JSX.Element {
+export default function NextSteps({ navigate, type, operator, options }: IProps): JSX.Element {
     const renderNextStep = () => {
         const opts = []
         for (let i = 1; i + 1 < options.max; i++) {

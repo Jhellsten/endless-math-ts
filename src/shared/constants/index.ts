@@ -1,4 +1,4 @@
-import { GameOperators } from 'shared/types/game.type';
+import { GameOptions } from 'shared/types/game.type';
 
 
 
@@ -50,7 +50,7 @@ export type GameOptionsType = {
 }
 
 export const DIFFICULTIES = {
-    [GameOperators.multiply]: [
+    [GameOptions.multiply]: [
         {
             title: TitleTypes.multiplyTable,
             options: {
@@ -80,7 +80,7 @@ export const DIFFICULTIES = {
             }
         }
     ],
-    [GameOperators.substraction]: [{
+    [GameOptions.substraction]: [{
         title: TitleTypes.easy,
         options: {
             min: 1,
@@ -101,7 +101,7 @@ export const DIFFICULTIES = {
             max: 300
         }
     }],
-    [GameOperators.division]: [{
+    [GameOptions.division]: [{
         title: TitleTypes.easy,
         options: {
             min: 1,
@@ -122,7 +122,7 @@ export const DIFFICULTIES = {
             max: 100
         }
     }],
-    [GameOperators.addition]: [{
+    [GameOptions.addition]: [{
         title: TitleTypes.easy,
         options: {
             min: 5,
@@ -143,7 +143,7 @@ export const DIFFICULTIES = {
             max: 500
         }
     }],
-    [GameOperators.empty]: [
+    [GameOptions.picture]: [
         {
             title: TitleTypes.easy,
             options: {
@@ -165,6 +165,13 @@ export const DIFFICULTIES = {
                 max: 9
             }
         }
-    ]
+    ],
+    [GameOptions.empty]: [{
+        title: '',
+        options: {
+            min: 1,
+            max: 10
+        }
+    }]
 }
 
