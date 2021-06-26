@@ -17,3 +17,9 @@ export enum GameTypes {
     division = 'Jakolaskut',
     picturePuzzles = 'Kuva arvoitukset',
 }
+
+export type GameObjectType = {
+    calculation: string,
+    correctAnswer: number,
+    answer: string | number
+}

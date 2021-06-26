@@ -1,11 +1,18 @@
+import { GameActions } from 'actions/game'
+import { GameObjectType } from 'shared/types/game.type'
 import * as actionTypes from '../actions/actionTypes'
 
-const initialState = {
+export type GameState = {
+    game: GameObjectType[],
+    operator: string
+}
+
+const initialState: GameState = {
     game: [],
     operator: ''
 }
 
-const decrease = (state = initialState, action) => {
+const decrease = (state = initialState, action: GameActions) => {
     switch (action.type) {
         case actionTypes.GENERATE_GAME:
             return { ...state, game: action.payload }
