@@ -38,7 +38,7 @@ const Input = ({
 }: CustomInputProps) => {
     return (
         <TextInput
-            value={value}
+            value={String(value)}
             placeholder={placeholder}
             onChange={onChange}
             onChangeText={onChangeText}
