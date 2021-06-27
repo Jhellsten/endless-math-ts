@@ -25,7 +25,7 @@ export default StyleSheet.create<Style>({
         backgroundColor: colors.white
     },
     gameRowStyle: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     scrollContainerStyle: {
         marginTop: Platform.OS === 'ios' ? 30 : 40
@@ -39,8 +39,8 @@ export default StyleSheet.create<Style>({
     textRowStyle: {
         fontSize: dimensions.fontSize.medium,
         margin: dimensions.margin.medium,
-        minWidth: '25%',
-        padding: dimensions.padding.medium,
+        minWidth: '40%',
+        // padding: dimensions.padding.medium,
         textAlign: 'center'
     }
 })
