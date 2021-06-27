@@ -14,7 +14,7 @@ export default StyleSheet.create<Style>({
     borderColor: themes.mint.support,
     borderRadius: 10,
     borderWidth: dimensions.border.small,
-    width: '50%'
+    width: '60%'
 },
 containerStyle: {
     ...mixins.containerStyle
