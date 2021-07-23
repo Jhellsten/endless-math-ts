@@ -47,7 +47,7 @@ export default {
         smallLogo: headerPink,
         logo: logoPink,
         primary: '#3d3d3d',
-        secondary: '#ffffff',
+        secondary: '#FF7BA3',
         decorative: '#f7f7f7',
         support: '#3d3d3d'
     },
