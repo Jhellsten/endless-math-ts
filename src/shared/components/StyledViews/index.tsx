@@ -12,7 +12,6 @@ const StyledContainer = styled.View`
 const StyledText = styled.Text`
     color: ${props => props.theme.secondary || theme.mint.secondary};
     font-size: 20px;
-    margin-bottom: 5%;
 }
 `
 
