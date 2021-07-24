@@ -11,18 +11,18 @@ interface Style {
 
 export default StyleSheet.create<Style>({
   buttonStyle: {
-    borderColor: themes.mint.support,
+    // borderColor: themes.mint.support,
     borderRadius: 10,
-    borderWidth: dimensions.border.small,
-    width: '60%'
+    // borderWidth: dimensions.border.small,
+    width: '60%',
 },
 containerStyle: {
     ...mixins.containerStyle
 },
 settingsButton: {
-    borderColor: themes.mint.support,
+    // borderColor: themes.mint.support,
     borderRadius: 10,
-    borderWidth: dimensions.border.small,
+    // borderWidth: dimensions.border.small,
     margin: 20,
     width: '50%'
 },

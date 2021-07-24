@@ -20,6 +20,14 @@ export default StyleSheet.create<Style>({
     height: dimensions.button.height,
     justifyContent: "center",
     width: "100%",
+    shadowColor: '#2a2a2a',
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    shadowOffset: {
+      width: 0,
+      height: 0
+    },
+    elevation: 2
   },
   containerStyle: {
     alignItems: "center",
