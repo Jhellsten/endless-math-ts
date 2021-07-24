@@ -26,10 +26,10 @@ export default StyleSheet.create<Style>({
         backgroundColor: colors.white
     },
     gameRowStyle: {
-        alignItems: 'baseline',
+        alignItems: 'center',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'space-evenly',
+        justifyContent: 'flex-start',
         paddingLeft: width * 0.1
     },
     scrollContainerStyle: {
@@ -45,7 +45,7 @@ export default StyleSheet.create<Style>({
         alignSelf: 'baseline',
         fontSize: dimensions.fontSize.medium,
         margin: dimensions.margin.medium,
-        minWidth: '5%',
+        minWidth: '10%',
         padding: dimensions.padding.medium
     }
 })
