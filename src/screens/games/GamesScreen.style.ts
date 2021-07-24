@@ -20,7 +20,7 @@ export default StyleSheet.create<Style>({
 },
 containerStyle: {
     ...mixins.containerStyle,
-    backgroundColor: colors.white
+    backgroundColor: colors.white,
 },
 iconStyle: {
     alignSelf: 'center',

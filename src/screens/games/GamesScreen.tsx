@@ -69,6 +69,7 @@ class Games extends Component<IProps, IState> {
                 <View style={styles.buttonContainerStyle} key={index}>
                     <Button
                         // style={styles.button}
+                        key={index}
                         onPress={() =>
                             difficulty.title === TitleTypes.multiplyTable
                                 ? this.setState({
@@ -126,10 +127,11 @@ class Games extends Component<IProps, IState> {
                 >
                     <CustomIcon icon={'gem'} style={styles.iconStyle} />
                     {operator !==  GameOptions.multiply ? (
-                        <StyledText theme={theme}>Valitse peli</StyledText>
+                        <StyledText style={styles.textStyle} theme={theme}>Valitse peli</StyledText>
                     ) : (
                         <StyledText
                             theme={theme}
+                            style={styles.textStyle}
                             onPress={() =>
                                 hasOptions ? this.setState({
                                     shouldShowOptions: true,
