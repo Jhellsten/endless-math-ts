@@ -199,7 +199,7 @@ class PuzzleGame extends Component<IProps, IState> {
                             <Button
                                 onPress={() => this.generateGame()}
                                 style={styles.button}
-                                text={'Nollaa'}
+                                text={'Uusi peli'}
                             />
                             <Button
                                 onPress={() => this.setState({ answered: !this.state.answered })}
