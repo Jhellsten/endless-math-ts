@@ -12,6 +12,7 @@ import { StyledContainer } from '../../shared/components/StyledViews/index'
 import Button from '@shared-components/Button/Button'
 import * as NavigationService from "react-navigation-helpers";
 import { SettingsStateType } from 'reducers/settings'
+import { localStrings } from 'shared/localization'
 interface IProps {
   theme: typeof themes.pink,
 }
@@ -19,6 +20,20 @@ interface IProps {
 interface IState {}
 
 class HomeScreen extends Component<IProps, IState> {
+    getCurrentLanguage = (): string => {
+        return localStrings.getLanguage()
+    }
+
+    _changeLanguage = (): void => {
+        if(this.getCurrentLanguage() === 'fi') {
+            localStrings.setLanguage('en')
+        }
+        else if(this.getCurrentLanguage() === 'en') {
+            localStrings.setLanguage('fi')
+        }
+        this.forceUpdate()
+    }
+
     render() {
         const { theme } = this.props
         return (
@@ -26,7 +41,7 @@ class HomeScreen extends Component<IProps, IState> {
                 <Image source={theme.logo} />
                 <CustomIcon icon={'gem'} size={30} />
                 <Button
-                    text='Aloita pelaaminen'
+                    text={localStrings.startPlaying}
                     style={[styles.buttonStyle, { backgroundColor: theme.primary }]}
                     onPress={() => NavigationService.navigate(APP_ROUTE.GAMES)}
                     icon
@@ -36,9 +51,15 @@ class HomeScreen extends Component<IProps, IState> {
                     iconNoMargin
                 />
                 <Button
-                    text='Asetukset'
+                    text={localStrings.settings.title}
                     style={[styles.settingsButton, { backgroundColor: theme.primary }]}
                     onPress={() => NavigationService.navigate(APP_ROUTE.SETTINGS)}
+                />
+                <Button
+                    text={`${localStrings.settings.changeLanguage} | ${this.getCurrentLanguage() === 'fi' ? localStrings.en : localStrings.fi}`}
+                    style={[styles.changeLanguageButton, { backgroundColor: theme.primary }]}
+                    textStyles={styles.changeLanguageTextStyle}
+                    onPress={this._changeLanguage}
                 />
             </StyledContainer>
         )

@@ -6,7 +6,9 @@ interface Style {
   buttonStyle: TouchableOpacityProps;
   containerStyle: ViewStyle;
   settingsButton: TextStyle;
+  changeLanguageButton: TextStyle;
   textStyle: TextStyle;
+  changeLanguageTextStyle: TextStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -25,6 +27,17 @@ settingsButton: {
     // borderWidth: dimensions.border.small,
     margin: 20,
     width: '50%'
+},
+changeLanguageButton: {
+    // borderColor: themes.mint.support,
+    borderRadius: 10,
+    // borderWidth: dimensions.border.small,
+    margin: 20,
+    width: '70%'
+},
+changeLanguageTextStyle: {
+  textAlign: 'center',
+    width: '100%',
 },
 textStyle: {
     ...mixins.mediumText,
