@@ -21,7 +21,9 @@ export default StyleSheet.create<Style>({
         backgroundColor: colors.white
     },
     settingRowStyle: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     textStyle: {
         ...mixins.mediumText,

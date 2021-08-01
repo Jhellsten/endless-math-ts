@@ -13,6 +13,7 @@ import CustomInput from '@shared-components/CustomInput/CustomInput';
 import Button from '@shared-components/Button/Button';
 import { Setting, Theme } from '@actions';
 import Header from '@shared-components/Header/Header';
+import { localStrings } from 'shared/localization';
 
 interface IProps {
     themes: typeof themes,
@@ -25,11 +26,20 @@ interface IProps {
 
 class Settings extends Component<IProps, IState> {
 
+    _settingsString = (settingName: string, index: number) => {
+        switch (settingName) {
+            case Object.keys(SETTINGS_OPTIONS)[index]:
+                return localStrings.settings.numberOfRows
+            default:
+                return settingName
+        }
+    }
+
     _renderSettings() {
         return Object.keys(SETTINGS_OPTIONS).map((setting, index) => {
             return (
                 <View style={styles.settingRowStyle} key={index}>
-                    <Text style={styles.textRowStyle}>{Object.values(SETTINGS_OPTIONS)[index]}</Text>
+                    <Text style={styles.textRowStyle}>{this._settingsString(Object.keys(SETTINGS_OPTIONS)[index], index)}</Text>
                     <CustomInput
                         width={'30%'}
                         value={this.props.settings[setting]}
@@ -72,9 +82,9 @@ class Settings extends Component<IProps, IState> {
                     // titleColor={colors.red}
                 />
                 <KeyboardAwareScrollView>
-                    <Text style={styles.textStyle}>Asetukset</Text>
+                    <Text style={styles.textStyle}>{localStrings.settings.title}</Text>
                     {this._renderSettings()}
-                    <Text style={styles.textStyle}>Teema</Text>
+                    <Text style={styles.textStyle}>{localStrings.settings.theme}</Text>
                     {this._renderThemeSelection()}
                 </KeyboardAwareScrollView>
             </View>
