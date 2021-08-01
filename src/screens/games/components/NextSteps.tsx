@@ -5,6 +5,7 @@ import { APP_ROUTE } from '@shared-constants'
 import Button from '@shared-components/Button/Button'
 import { ThemeType } from '@themes'
 import { GameOptions } from 'shared/types/game.type'
+import { localStrings } from 'shared/localization'
 
 interface IProps {
     navigate: (routeName: string, params?: any) => void,
@@ -31,7 +32,7 @@ export default function NextSteps({ navigate, type, operator, options }: IProps)
                                 max: 10
                             })
                         }
-                        text={i + ' kertotaulu'}
+                        text={i + ` ${localStrings.games.multiplyTable}`}
                     ></Button>
                 </View>
             )
