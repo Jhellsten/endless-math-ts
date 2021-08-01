@@ -20,7 +20,8 @@ type ButtonProps = {
   iconSize?: number
   iconNoMargin?: boolean
   textColor?: string,
-  theme: ThemeType
+  theme: ThemeType,
+  textStyles?: TextStyle
 }
 
 const Button = ({
@@ -36,6 +37,7 @@ const Button = ({
   iconNoMargin,
   textColor,
   theme,
+  textStyles
 }: ButtonProps) => {
   textColor = textColor || theme.secondary
   const defaultStyle = {
@@ -52,7 +54,7 @@ const Button = ({
       }
       disabled={disabled}
     >
-      <Text style={[Styles.textStyle, { color: textColor }]}>{text}</Text>
+      <Text style={[Styles.textStyle, { color: textColor }, textStyles]}>{text}</Text>
       {icon && iconName && (
         <CustomIcon
           icon={iconName}
