@@ -13,7 +13,8 @@ import Button from '@shared-components/Button/Button'
 import { StyledContainer, StyledText } from '@shared-components/StyledViews'
 import Header from '@shared-components/Header/Header'
 import CustomIcon from '@shared-components/CustomIcon/CustomIcon'
-import { GameOptions } from 'shared/types/game.type'
+import { GameOptions, GameTypes } from 'shared/types/game.type'
+import { localStrings } from 'shared/localization'
 
 interface IProps {
     theme: ThemeType,
@@ -40,6 +41,41 @@ class Games extends Component<IProps, IState> {
         }
     }
 
+    _categoryTitleString = (title: GameTypes): string => {
+        const { games: gameStrings } = localStrings
+        switch (title) {
+            case GameTypes.addition:
+                return gameStrings.addition
+            case GameTypes.substraction:
+                return gameStrings.substraction
+            case GameTypes.multiply:
+                return gameStrings.multiply
+            case GameTypes.division:
+                return gameStrings.division
+            case GameTypes.picturePuzzles:
+                return gameStrings.picturePuzzles
+            default:
+                return ''
+        }
+
+    }
+    _difficultyString = (title: TitleTypes): string => {
+        const { games: gameStrings } = localStrings
+        switch (title) {
+            case TitleTypes.easy:
+                return gameStrings.difficultyLevels.easy
+            case TitleTypes.medium:
+                return gameStrings.difficultyLevels.regular
+            case TitleTypes.hard:
+                return gameStrings.difficultyLevels.hard
+            case TitleTypes.multiplyTable:
+                return gameStrings.multiplyTables
+            default:
+                return ''
+        }
+
+    }
+
     _renderCategories() {
         const { theme, categories } = this.props
         return categories.map((category, index) => {
@@ -55,7 +91,7 @@ class Games extends Component<IProps, IState> {
                                       shouldShowOptions: true
                                   })
                         }
-                        text={category.title}
+                        text={this._categoryTitleString(category.title)}
                     ></Button>
                 </View>
             )
@@ -92,7 +128,7 @@ class Games extends Component<IProps, IState> {
                                     max: difficulty.options?.max
                                 })
                         }
-                        text={difficulty.title}
+                        text={this._difficultyString(difficulty.title)}
                     ></Button>
                 </View>
             )
@@ -100,6 +136,7 @@ class Games extends Component<IProps, IState> {
     }
 
     render() {
+        const { games: gameStrings } = localStrings
         const { operator, type, options, shouldShowOptions, hasOptions } = this.state
         const { theme } = this.props
         return (
@@ -117,7 +154,13 @@ class Games extends Component<IProps, IState> {
                                 shouldShowOptions: false,
                                 
                             })
-                            : goBack()
+                            : hasOptions && type === TitleTypes.multiplyTable ? this.setState({
+                                operator: GameOptions.multiply,
+                                type: '',
+                                shouldShowOptions: true,
+                                hasOptions: false
+                                
+                            }) : goBack()
                     }
                     back={true}
                 />
@@ -127,7 +170,7 @@ class Games extends Component<IProps, IState> {
                 >
                     <CustomIcon icon={'gem'} style={styles.iconStyle} />
                     {operator !==  GameOptions.multiply ? (
-                        <StyledText style={styles.textStyle} theme={theme}>Valitse peli</StyledText>
+                        <StyledText style={styles.textStyle} theme={theme}>{gameStrings.selectGame}</StyledText>
                     ) : (
                         <StyledText
                             theme={theme}
@@ -144,7 +187,7 @@ class Games extends Component<IProps, IState> {
                                 })
                             }
                         >
-                            Edellinen
+                            {localStrings.previous}
                         </StyledText>
                     )}
                     {!shouldShowOptions && !hasOptions && this._renderCategories()}
