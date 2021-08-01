@@ -25,7 +25,7 @@ export const localStrings = new LocalizedStrings({
       substraction: "Vähennyslaskut",
       multiply: "Kertolaskut",
       multiplyTables: "Kertotaulut",
-      multiplyTable: "ertotaulu",
+      multiplyTable: "kertotaulu",
       division: "Jakolaskut",
       picturePuzzles: "Kuva arvoitukset",
       difficultyLevels: {
